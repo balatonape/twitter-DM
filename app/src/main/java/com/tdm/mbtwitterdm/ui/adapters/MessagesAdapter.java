@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tdm.mbtwitterdm.data.response.Event;
-import com.tdm.mbtwitterdm.databinding.MessageItemViewLeftBinding;
+import com.tdm.mbtwitterdm.databinding.MessageItemViewBinding;
 import com.tdm.mbtwitterdm.ui.viewmodel.MessageItemViewModel;
 
 import java.util.ArrayList;
@@ -30,14 +30,14 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Bindin
     @NonNull
     @Override
     public BindingHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MessageItemViewLeftBinding binding = MessageItemViewLeftBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        MessageItemViewBinding binding = MessageItemViewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new BindingHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(MessagesAdapter.BindingHolder holder, final int position) {
         Event event = eventList.get(position);
-        ((MessageItemViewLeftBinding) holder.getBinding()).setMsg(new MessageItemViewModel(event, avatarUrl));
+        ((MessageItemViewBinding) holder.getBinding()).setMsg(new MessageItemViewModel(event, avatarUrl));
     }
 
     @Override
@@ -51,9 +51,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Bindin
     }
 
     public static class BindingHolder extends RecyclerView.ViewHolder {
-        private MessageItemViewLeftBinding binding;
+        private MessageItemViewBinding binding;
 
-        BindingHolder(MessageItemViewLeftBinding rowView) {
+        BindingHolder(MessageItemViewBinding rowView) {
             super(rowView.getRoot());
             binding = rowView;
         }

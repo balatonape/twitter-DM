@@ -29,7 +29,7 @@ class MessageScreen : AppCompatActivity() {
         msg_list.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
 
         viewModel = MessageScreenViewModel(userId = usrId)
-        viewModel.getMessageList()
+        viewModel.getMessageList(usrId)
         viewModel.errors?.observe(this, Observer { showSnackBar(it) })
         viewModel.events?.observe(this, Observer { updateMessageList(it) })
         viewModel.sentMsgEvent?.observe(this, Observer { addMessageToList(it) })
@@ -44,7 +44,9 @@ class MessageScreen : AppCompatActivity() {
     fun updateMessageList(eventList: List<Event>?) {
         adapter = MessagesAdapter(eventList, emptyView, avatarUrl)
         msg_list.adapter = adapter
-        msg_list.smoothScrollToPosition(adapter.itemCount - 1)
+        if (adapter.itemCount > 0) {
+            msg_list.smoothScrollToPosition(adapter.itemCount - 1)
+        }
     }
 
     fun addMessageToList(event: Event?) {

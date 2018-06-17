@@ -27,13 +27,17 @@ class MessageScreenViewModel(val userId: String) {
     val sentMsgEvent: LiveData<Event>?
         get() = sentEvent
 
-    fun getMessageList() {
+
+    //    Filtering the response based on the userId to get only messages related to that user
+    fun getMessageList(userId: String) {
         val msgListCall = TwitterApplication.getInstance().apiClient.customService.getMessageList()
         msgListCall.enqueue(object : Callback<EventsList> {
             override fun onResponse(call: Call<EventsList>, response: Response<EventsList>) {
                 when {
                     response?.code() in 200..299 -> {
-                        eventList.value = response.body()?.events?.reversed()
+                        eventList.value = response.body()?.events?.filter {
+                            (userId.equals(it.message_create?.sender_id) || userId.equals(it.message_create?.target?.recipient_id))
+                        }?.reversed()
                     }
                     else -> error.value = "Unable to get Messages"
                 }

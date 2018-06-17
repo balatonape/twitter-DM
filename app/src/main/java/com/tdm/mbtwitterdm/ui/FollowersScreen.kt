@@ -40,6 +40,8 @@ class FollowersScreen : AppCompatActivity() {
     fun updateUsersList(userList: List<User>?) {
         adapter = FollowerAdapter(baseContext, userList, empty_view)
         friends_list.adapter = adapter
-        friends_list.smoothScrollToPosition(adapter.itemCount - 1)
+        if (adapter.itemCount > 0) {
+            friends_list.smoothScrollToPosition(adapter.itemCount - 1)
+        }
     }
 }

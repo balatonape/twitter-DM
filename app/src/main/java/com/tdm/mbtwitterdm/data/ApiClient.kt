@@ -12,13 +12,14 @@ interface ApiClient {
     @GET("/1.1/users/show.json")
     fun getUserInfo(@Query("user_id") userId: Long): Call<User>
 
-    @GET("/1.1/friends/list.json?cursor=-1&skip_status=true&include_user_entities=false")
+    @GET("/1.1/followers/list.json?cursor=-1&skip_status=true&include_user_entities=false")
     fun getAllFriendsList(@Query("user_id") userId: Long, @Query("screen_name") scrName: String): Call<FriendListResponse>
 
     @POST("/1.1/direct_messages/events/new.json")
     @Headers("Content-Type: application/json")
     fun sendMessage(@Body event: NewMessageEvent): Call<SentMessage>
 
+    //    I didn't find Api where it gives all message for a particular user hence getting the complete list and filtering afterwords
     @GET("/1.1/direct_messages/events/list.json")
     fun getMessageList(): Call<EventsList>
 

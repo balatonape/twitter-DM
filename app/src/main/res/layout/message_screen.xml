@@ -49,14 +49,16 @@
         app:layout_constraintBottom_toTopOf="@+id/msg_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="2"
+        tools:listitem="@layout/message_item_view" />
 
     <TextView
         android:id="@+id/emptyView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="@string/empty_view_message"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/msg_text"
         app:layout_constraintEnd_toEndOf="parent"

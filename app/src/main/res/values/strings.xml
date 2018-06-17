@@ -9,4 +9,5 @@
     <string name="com.twitter.sdk.android.CONSUMER_KEY">8heok9298LkfVXCLArDvyf69I</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">afgZuH7cvc7odykPLtlUxBe2AusKdo8Y79ENXp7ZKsmbOFUbPx</string>
     <string name="empty_friends">No friends on twitter</string>
+    <string name="empty_view_message">Start Conversation type the message below</string>
 </resources>
