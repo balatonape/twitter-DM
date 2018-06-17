@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TwitterDM</string>
+    <string name="twitter_icon">twitter icon</string>
+    <string name="login">Log In</string>
+    <string name="user_icon">User Icon</string>
+    <string name="login_email">Phone, Email or Username</string>
+    <string name="login_password">Password</string>
+
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">8heok9298LkfVXCLArDvyf69I</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">afgZuH7cvc7odykPLtlUxBe2AusKdo8Y79ENXp7ZKsmbOFUbPx</string>
+    <string name="empty_friends">No friends on twitter</string>
+</resources>

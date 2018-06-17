@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#dbdbdb</color>
+    <color name="moreGray">#dbdbdb</color>
+    <color name="colorAccent">#40c9ff</color>
+    <color name="loginButtonPress">#40afff</color>
+    <color name="moreBlue">#da2b9def</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="gray">#ededed</color>
+</resources>
