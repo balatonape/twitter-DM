@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tdm.mbtwitterdm.data.Event;
+import com.tdm.mbtwitterdm.data.response.Event;
 import com.tdm.mbtwitterdm.databinding.MessageItemViewLeftBinding;
 import com.tdm.mbtwitterdm.ui.viewmodel.MessageItemViewModel;
 

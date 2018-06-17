@@ -1,20 +1,23 @@
 package com.tdm.mbtwitterdm.ui
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.tdm.mbtwitterdm.R
-import com.tdm.mbtwitterdm.TwitterApplication
-import com.tdm.mbtwitterdm.data.FriendListResponse
 import com.tdm.mbtwitterdm.ui.adapters.FollowerAdapter
+import com.tdm.mbtwitterdm.ui.viewmodel.FollowerScreenViewModel
+import com.twitter.sdk.android.core.models.User
 import kotlinx.android.synthetic.main.followers_screen.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.android.synthetic.main.message_screen.*
 
 class FollowersScreen : AppCompatActivity() {
+    lateinit var viewModel: FollowerScreenViewModel
+    lateinit var adapter: FollowerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,19 +26,20 @@ class FollowersScreen : AppCompatActivity() {
         friends_list.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
         friends_list.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
-        val call = TwitterApplication.getInstance().apiClient.customService.getAllFriendsList(
-                TwitterApplication.getInstance().userInfo.usrId,
-                TwitterApplication.getInstance().userInfo.usrScrName)
+        viewModel = FollowerScreenViewModel()
+        viewModel.errors?.observe(this, Observer { showSnackBar(it) })
+        viewModel.users?.observe(this, Observer { updateUsersList(it) })
 
-        call.enqueue(object : Callback<FriendListResponse> {
-            override fun onResponse(call: Call<FriendListResponse>, response: Response<FriendListResponse>?) {
-                val adapter = FollowerAdapter(baseContext, response?.body()?.users, empty_view)
-                friends_list.adapter = adapter
-            }
+        viewModel.getFriendsList()
+    }
 
-            override fun onFailure(call: Call<FriendListResponse>, t: Throwable) {
-                println("******** failure")
-            }
-        })
+    fun showSnackBar(string: CharSequence?) {
+        Snackbar.make(parentLayout, string ?: "Error", Snackbar.LENGTH_LONG).show()
+    }
+
+    fun updateUsersList(userList: List<User>?) {
+        adapter = FollowerAdapter(baseContext, userList, empty_view)
+        friends_list.adapter = adapter
+        friends_list.smoothScrollToPosition(adapter.itemCount - 1)
     }
 }

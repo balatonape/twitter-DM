@@ -11,7 +11,7 @@ public class FollowerItemViewModel {
 
     public FollowerItemViewModel(User user) {
         avatarUrl.set(user.profileImageUrl);
-        userName.set(user.name);
+        userName.set(user.name + " @" + user.screenName);
         userDesc.set(user.description);
     }
 }

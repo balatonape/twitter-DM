@@ -4,7 +4,7 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 
 import com.tdm.mbtwitterdm.TwitterApplication;
-import com.tdm.mbtwitterdm.data.Event;
+import com.tdm.mbtwitterdm.data.response.Event;
 
 public class MessageItemViewModel {
     public final ObservableField<String> avatarUrl = new ObservableField<>();

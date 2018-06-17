@@ -1,4 +1,4 @@
-package com.tdm.mbtwitterdm.data
+package com.tdm.mbtwitterdm.data.response
 
 data class EventsList(val events: List<Event>?)
 

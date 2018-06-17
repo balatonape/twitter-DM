@@ -5,9 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class NewMessageEvent(
         @SerializedName("event")
-        @Expose var event: MessageEvent) {
-
-}
+        @Expose var event: MessageEvent)
 
 data class MessageEvent(
         @SerializedName("type")

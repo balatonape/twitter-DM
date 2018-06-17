@@ -19,6 +19,7 @@ public class TwitterApplication extends Application {
 
     private static TwitterApplication application;
 
+    //    Making it as singleton to access the userInfo and session in other places
     public static TwitterApplication getInstance() {
         return application;
     }
@@ -26,8 +27,9 @@ public class TwitterApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         application = this;
+
+        //        Twitter initialization
         Twitter.initialize(this);
 
         TwitterConfig config = new TwitterConfig.Builder(this)

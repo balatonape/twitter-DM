@@ -1,7 +1,9 @@
 package com.tdm.mbtwitterdm.data
 
+import com.tdm.mbtwitterdm.data.response.EventsList
+import com.tdm.mbtwitterdm.data.response.FriendListResponse
+import com.tdm.mbtwitterdm.data.response.SentMessage
 import com.twitter.sdk.android.core.models.User
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 

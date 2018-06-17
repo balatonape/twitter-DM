@@ -1,4 +1,4 @@
-package com.tdm.mbtwitterdm.data
+package com.tdm.mbtwitterdm.data.response
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
